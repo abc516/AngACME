@@ -7,11 +7,15 @@
     angular
         .module("productManagement")
         .controller("ProductListCtrl",
-                    ProductListCtrl);
+                    ["productResource", ProductListCtrl]);
 
-    function ProductListCtrl() {
+    function ProductListCtrl(productResource) {
         var vm = this;
-        vm.products = [
+
+        productResource.query(function (data) {
+            vm.products = data
+        });
+        /*vm.products = [
             {
                 "productId": 1,
                 "productName": "Rake",
@@ -36,7 +40,8 @@
                 "tags": ["tool"],
                 "imageUrl": "http://pngimg.com/upload/hammer_PNG3890.png"
             }
-        ]
+        ]*/
+
         vm.showImage = false
 
         vm.toggleImage = function () {
