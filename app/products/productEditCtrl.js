@@ -9,13 +9,20 @@
         .controller("ProductEditCtrl",
         ["product",
             "$state",
+            "productService",
             ProductEditCtrl]);
 
 
-    function ProductEditCtrl(product, $state) {
+    function ProductEditCtrl(product, $state, productService) {
         var vm = this;
 
         vm.product = product;
+        vm.priceOption = "percent";
+
+        vm.marginPercent = function () {
+            return productService.calculateMarginPercent(vm.product.price,
+                                                         vm.product.cost)
+        }
 
         if (vm.product && vm.product.productId) {
             vm.title = "Edit: " + vm.product.productName;
