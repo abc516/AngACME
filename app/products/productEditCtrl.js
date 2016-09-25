@@ -31,11 +31,14 @@
             vm.opened = !vm.opened;
         };
 
-        vm.submit = function () {
-            vm.product.$save(function (data) {
+        vm.submit = function (isValid) {
+            if(isValid) {
+                vm.product.$save(function (data) {
                     toastr.success("Save Successful");
-                }
-            );
+                });
+            } else{
+                alert("Please correct the validation errors first.")
+            }
         }
 
         vm.cancel = function () {
