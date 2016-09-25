@@ -1,38 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<link>
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
     <meta charset="UTF-8">
     <title>Acme Product Management</title>
 
-    <!--Stylesheets-->
+    <!-- Style sheets -->
     <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/toastr.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet"/>
 
-    <!--Library Scripts -->
-    <script src="js/jquery-3.1.1.js"></script>
+    <!-- Library Scripts -->
+    <script src="js/jquery.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/angular-resource.js"></script>
     <script src="js/angular-mocks.js"></script>
     <script src="js/angular-ui-router.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/ui-utils.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="js/toastr.js"></script>
 
-    <!--Application Script-->
+    <!-- Application Script -->
     <script src="app/app.js"></script>
 
-    <!--Services -->
+    <!-- Services -->
     <script src="common/services/common.services.js"></script>
     <script src="common/services/productResource.js"></script>
     <script src="common/services/productResourceMock.js"></script>
 
-    <!--Product Controllers-->
+    <!-- Product Controllers -->
     <script src="app/products/productListCtrl.js"></script>
+    <script src="app/products/productDetailCtrl.js"></script>
+    <script src="app/products/productEditCtrl.js"></script>
 </head>
 
 <body ng-app="productManagement">
     <nav class="navbar navbar-inverse">
         <div class="container">
             <a class="navbar-brand"
-               ui-sref="home"> Acme Product Management</a>
+               ui-sref="home">Acme Product Management</a>
             <div class="navbar-header">
                 <button type="button"
                         class="navbar-toggle"
@@ -47,14 +53,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="productList">Product List</a></li>
-                    <li><a ui-sref="productEdit({productId:0})"><i class="glyphicon glyphicon-plus"></i>Add product </a></li>
+                    <li><a ui-sref="productEdit.info({productId:0})">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        Add Product</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <div class="container">
-        <div ui-view=""></div>
+        <div ui-view></div>
     </div>
-</body >
+</body>
 
 </html>
